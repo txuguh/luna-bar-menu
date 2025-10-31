@@ -10,27 +10,45 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg:#0e1116;          /* deep night */
-      --card:#121722;        /* menu board */
-      --ink:#e9eef5;         /* text */
-      --muted:#a6b0c2;       /* secondary text */
-      /* Updated accent palette to better match Luna Bar's warm coastal vibe */
-      --accent:#fbbf24;      /* golden highlight */
-      --accent2:#6ee7f3;     /* cool cyan secondary */
-      --rule:#1f2533;        /* dividers */
+      /*
+        Colour palette tuned for a lighter, beach‑inspired look.
+
+        The previous dark palette created a sophisticated nighttime mood.
+        To evoke daytime at Praia da Vagueira, we switch to soft neutrals
+        reminiscent of sun‑bleached sand and pale sky while keeping
+        existing accent colours for continuity.
+      */
+      --bg:#fdf8f3;          /* soft sand background */
+      --card:#ffffff;        /* white cards for menu sections */
+      --ink:#1e293b;         /* dark slate text for contrast */
+      --muted:#64748b;       /* muted slate for secondary text */
+      --accent:#fbbf24;      /* golden highlight (unchanged) */
+      --accent2:#6ee7f3;     /* cool cyan secondary (unchanged) */
+      --rule:#e2e8f0;        /* light grey dividers */
     }
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
-      margin:0; background:radial-gradient(1200px 800px at 80% -10%, #1a2233 0%, #0c0f14 55%), var(--bg);
-      color:var(--ink); font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      margin:0;
+      /* Replace the dark radial gradient with a gentle vertical gradient
+         suggesting sea and sky meeting the sand.  The base colour
+         (var(--bg)) fills the remainder of the viewport. */
+      background:
+        linear-gradient(to bottom,
+          rgba(187, 222, 251, 0.3) 0%,   /* pale sky blue */
+          rgba(253, 248, 243, 0.7) 50%,  /* transition to sand */
+          rgba(253, 248, 243, 1) 100%),
+        var(--bg);
+      color:var(--ink);
+      font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
       line-height:1.5;
     }
     .wrap{max-width:920px; margin:0 auto; padding:18px;}
     header{
       position:sticky; top:0; z-index:10;
       backdrop-filter:saturate(1.2) blur(8px);
-      background:linear-gradient(to bottom, rgba(14,17,22,.9), rgba(14,17,22,.6));
+      /* Lighter header for the bright theme */
+      background:linear-gradient(to bottom, rgba(255,255,255,.95), rgba(255,255,255,.85));
       border-bottom:1px solid var(--rule);
     }
     .brand{display:flex; align-items:center; gap:14px; padding:12px 2px}
@@ -42,11 +60,11 @@
     .toolbar{display:flex; gap:10px; flex-wrap:wrap; align-items:center; padding:10px 2px 16px}
     input[type="search"]{
       flex:1; min-width:200px; padding:12px 14px; border-radius:12px; border:1px solid var(--rule);
-      background:#0b0f15; color:var(--ink); outline:none;
+      background:#f5f7fa; color:var(--ink); outline:none;
     }
     .pill{
       border:1px solid var(--rule); border-radius:999px; padding:8px 12px; cursor:pointer; user-select:none;
-      color:var(--muted); background:#0b0f15;
+      color:var(--muted); background:#f5f7fa;
     }
     .pill.active{color:#0a0a0a; background:var(--accent); border-color:transparent}
 
@@ -60,7 +78,7 @@
     @media (min-width:640px){ .items{grid-template-columns:1fr 1fr} }
 
     .item{display:grid; grid-template-columns: 1fr auto; align-items:start; gap:12px; padding:8px 10px; border-radius:12px}
-    .item:hover{background:#0c1018}
+    .item:hover{background:#f5f7fa}
     .name{font-weight:500}
     .desc{color:var(--muted); font-size:12px}
     .price{font-variant-numeric: tabular-nums; letter-spacing:.3px; padding-left:10px}
